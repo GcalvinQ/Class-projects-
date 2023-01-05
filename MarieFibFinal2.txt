@@ -1,0 +1,45 @@
+﻿//Input value of Fib wanted and store contents(AC) to location Num and Counter
+Input 
+Store Num 
+Store Counter
+
+//AC <- 0 
+//This allows for the value In AC at the end of the loop to be the fibonacci Rule
+//F(n-1) + F(n-2)
+GetFib,  Clear
+		Load Counter
+		Subt CountSubt
+		Store Counter
+		Load FirstAdd
+		Add FibAnswer
+		Store InNumFib
+		Load FibAnswer
+		Store FirstAdd
+		Load InNumFib
+        Store FibAnswer
+        StoreI MemLctn //Continuously the same memory location for the contents of the AC (being the Fib sequence) 
+		Load MemLctn
+        Add One
+        Store MemLctn
+        Load FibAnswer
+        Store FibAnswer
+		Load Counter
+		Skipcond 400 //Skipcond if AC = 0 //Counter = 0  
+		Jump GetFib  //If the Skipcond not met just to the GetFib loop
+        Jump halt    //If met jump to halt 
+
+//Halt condition to present output at given memory location  
+halt,   Load FibAnswer //Final fib number to be outputted
+		Output /output contents of AC 
+		Halt 
+
+//Variables
+One, DEC 1
+Num, DEC 0 
+Counter, DEC 0 
+CountSubt, DEC 1
+FibAnswer, DEC 0 
+FirstAdd, DEC 1
+InNumFib, DEC 0
+MemLctn, DEC 0100 
+ActLctn, DEC 0 
